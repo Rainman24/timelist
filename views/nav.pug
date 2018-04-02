@@ -1,0 +1,16 @@
+html
+	head
+		link(rel='stylesheet', href='/css/nav.css')
+
+	body
+
+		div#header
+			if user
+				ul
+					li.leftside #{user.username}
+					li
+						a(href='/logout') Log Out
+			else
+				ul
+					li.leftside#sgnup Sign Up
+					li#lgin Log In

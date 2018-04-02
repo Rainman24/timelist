@@ -1,0 +1,101 @@
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+} 
+
+.popup {
+	position: absolute;
+	top: 5vh;
+	left: 32%;
+	width: 30vw;
+	height: 10vh;
+	z-index: -4;
+}
+
+.popup h4 {
+	text-align: center;
+	font-family: Garamond;
+	color: rgba(140,140,140,0.8);
+}
+
+.cont {
+	position: relative;
+	margin: 5vh auto;
+	width: 80vw;
+	height: 40vh;
+	perspective: 2500px;
+}
+
+.room {
+	width: inherit;
+	height: inherit;
+	transform-style: preserve-3d;
+	transform: rotateX(-10deg);
+}
+
+.side {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5));
+	box-shadow: 7px 5px 30px rgba(0, 0, 0, 0.3);
+	font-size: 40px;
+	line-height: 40vh;
+	text-align: center;
+}
+
+.lft {
+	transform: rotateY(-45deg) translateZ(40vw);
+}
+
+.rgt {
+	transform: rotateY(45deg) translateZ(40vw);
+}
+
+.signup, .login {
+	position: absolute;
+	line-height: 40vh;
+	box-sizing: border-box;
+}
+
+.signup input, .login input {
+	display: block;
+	margin: 10 auto;
+	width: 30vw;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.signup form {
+	position: absolute;
+	top: 5vh;
+	left: 35vw;
+	box-sizing: border-box;
+}
+
+.login form {
+	position: absolute;
+	top: 10vh;
+	left: 15vw;
+	box-sizing: border-box;
+}
+
+form {
+	display: none;
+}
+
+#subs, #subl {
+	width: 5vw;
+	border-radius: 20px;
+	padding: 2;
+	margin: 25 auto;
+	box-shadow: 0px -1px 1px rgba(255,255,255,0.2), 
+	1px 1px 1px rgba(0,0,0,0.2), 
+	inset 0 -1px 1px rgba(0,0,0,0.3), 
+	inset 0 -1px 1px rgba(255,255,255,0.3); 
+}
+
+input:focus {
+	outline: none;
+}

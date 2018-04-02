@@ -1,0 +1,55 @@
+html
+	head
+		link(rel='stylesheet', href='/css/base.css')
+
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+  			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  			crossorigin="anonymous")
+
+		title This is not a homepage
+		
+	body
+
+		include nav.pug
+
+		div.cont
+
+			div.popup
+				h4 #{message}
+
+			div.room
+				div(class='side lft')
+					div.signup 
+						form(id='signup' method='POST' action='/signup' autocomplete='off')
+							input(name='fullname' type='text' placeholder='Full Name')
+							input(name='email' type='text' placeholder='Your Email')
+							input(name='username' type='text' placeholder='Username')
+							input(name='password' type='password' placeholder='Password')
+							input(name='confpass' type='password' placeholder='Confirm Password')
+							input#subs(type='submit' value='✔︎')
+
+				div(class='side rgt')
+					div.login
+						form(id='login' method='POST' action='/login' autocomplete='off')
+							input(name='username' type='text' placeholder='Username')
+							input(name='password' type='password' placeholder='Password')
+							input#subl(name='submit' type='submit' value='✔︎')
+
+script.
+
+	$(document).ready(function(){
+
+		$('#sgnup').on('click', function(){
+			$('.lft').css({transform: 'rotateY(-40deg) translateZ(40vw)'})
+			$('.rgt').css({transform: 'rotateY(50deg) translateZ(40vw)'})
+			$('.signup form').toggle(1000)
+			$('.login form').hide(900)
+		})
+
+		$('#lgin').on('click', function(){
+			$('.lft').css({transform: 'rotateY(-50deg) translateZ(40vw)'})
+			$('.rgt').css({transform: 'rotateY(40deg) translateZ(40vw)'})
+			$('.login form').toggle(1000)
+			$('.signup form').hide(900)
+		})
+	})

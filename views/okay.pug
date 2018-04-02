@@ -1,0 +1,96 @@
+html
+	head
+		link(rel='stylesheet', href='/css/okay.css')
+
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+			integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			crossorigin="anonymous")
+
+		script(src='script/moment.js')
+		script(type='text/javascript' src='script/timelist2.js')
+		script(type='text/javascript' src='script/focus.js')
+
+		title Your Space
+	body
+		include nav.pug
+
+		div.cont
+			div.room
+
+				div(class='side back' id='tab1')
+					div.search
+						p#tag Search
+
+						form(id='search' autocomplete='off')
+							input(id='item' type='text' placeholder='Note')
+
+				div(class='side back')
+					div.forms#untilf
+
+						form(id='unt' method='POST' action='/until' autocomplete='off')
+
+							input#hours(name='hours' type='text' placeholder=' H0-24')
+							span  : 
+							input#mins(name='minutes' type='text' placeholder=' M0-59')
+							input#note1(name='note' type='text' placeholder='Until What')
+
+							input#submit(type='submit' value='✔︎')
+
+					div.forms#amountf
+
+						form(id='amt' method='POST' action='/amount'  autocomplete='off')
+
+							input#hrs(name='hours' type='text' placeholder=' H0-24')
+							span  : 
+							input#mns(name='minutes' type='text' placeholder=' M0-59')
+							input#note2(name='note' type='text' placeholder='For How Long')
+
+							input#sbmt(type='submit' value='✔︎')
+
+				div(class='side bottom')
+					div.output
+						div.tdtl
+						
+				div(class='side left')
+					div#ut
+				div(class='side right')
+					div#du
+
+script.
+
+	$(document).ready(function(){
+
+		$('.bottom').mouseenter(
+			function(){
+			$('.bottom').css({transform: 'rotateX(-120deg) translateZ(5vw) translateY(-6vw) translateX(-18vw)'})
+			$('.bottom').css({background: 'linear-gradient(0deg, white 40%, rgba(255,255,255,0.1) 100%)'})
+		})
+		$('.bottom').mouseleave(
+			function(){
+			$('.bottom').css({transform: 'rotateX(-90deg) translateZ(15vw) translateX(-18vw)'})
+		})
+
+		$('#tag').on('click', function(evnt){
+
+				$('#tab1').css({zIndex:'999'})
+				$('.forms').css({display: 'none'})
+				$('#search').css({visibility:'visible'})
+		})
+
+		$('#item').on('keyup', function(evnt){
+				var input = evnt.target.value
+				
+			$('.note').each(function(index,element){
+
+				console.log(element.textContent.indexOf(input))
+				
+				if(element.textContent.indexOf(input) != -1) {
+					$(element.parentNode).css({display: 'inline-block'})
+					
+				} else {
+					$(element.parentNode).css({display: 'none'})
+				}
+			})
+		})
+
+	})
